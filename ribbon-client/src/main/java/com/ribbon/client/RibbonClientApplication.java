@@ -22,7 +22,7 @@ import com.ribbon.Employee.configuration.EmployeeConfiguration;
 @RibbonClient(name = "employee-microservice", configuration = EmployeeConfiguration.class)
 public class RibbonClientApplication {
 
-	  @LoadBalanced
+	 @LoadBalanced
 	  @Bean
 	  RestTemplate restTemplate(){
 	    return new RestTemplate();
@@ -32,7 +32,7 @@ public class RibbonClientApplication {
 	  RestTemplate restTemplate;
 
 	  @RequestMapping("/listEmployee")
-	  public List getEmployeeList() {
+	  public List hi(@RequestParam(value="name", defaultValue="Artaban") String name) {
 	    List empList = this.restTemplate.getForObject("http://employee-microservice/employees", ArrayList.class);
 	    return empList;
 	  }

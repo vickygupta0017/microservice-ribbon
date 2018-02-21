@@ -29,12 +29,6 @@ public class EmployeeServerController {
 	@Autowired
 	EmployeeDtoService service;
 	
-	
-	@RequestMapping(value = "/")
-	  public String home() {
-	    return "Hi!";
-	  }
-	
 	@RequestMapping(value = "/employees", method= RequestMethod.GET)
 	public Employee[] all(HttpServletRequest request) {
 		System.out.println("Local PORT ----------------"+request.getLocalPort()+"-------------------");
@@ -47,5 +41,10 @@ public class EmployeeServerController {
 		System.out.println("Local PORT ----------------"+request.getLocalPort()+"-------------------");
 		Employee employee = service.getEmployeeById(id);
 		return employee;
+	}
+	
+	@RequestMapping(value = "/")
+	public String status() {
+	    return "";
 	}
 }
